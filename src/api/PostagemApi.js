@@ -15,13 +15,6 @@ class PostagemApi {
         return Axios.post(`${this.baseUrl}/postagem`, postagem);
     }
 
-    static edit(postagem) {
-        return Axios.put(`${this.baseUrl}/postagem`, postagem);
-    }
-
-    static delete(codigo) {
-        return Axios.delete(`${this.baseUrl}/postagem`);
-    }
 }
 
 export default PostagemApi;

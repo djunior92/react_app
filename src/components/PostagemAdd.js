@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import PostagemApi from "../api/PostagemApi";
 import { toast } from "react-toastify";
 
-function PostagemEdit({ history, match }) {
-  const [isEdit, setIsEdit] = useState(false);
-  const [errors, setErrors] = useState({});
+function PostagemEdit({ history }) {
 
   const [postagem, setPostagem] = useState({
     Titulo: "",
@@ -14,42 +12,26 @@ function PostagemEdit({ history, match }) {
 
 
   useEffect(() => {
-    if (match) {
-      setIsEdit(true);
-      let codigoPostagem = +match.params.codigo;
-      PostagemApi.getByCodigo(codigoPostagem).then((response) => {
-        setPostagem(response.data);
-      });
-    }
-
   }, []);
+
+
 
   function submitForm(event) {
     event.preventDefault();
-
     PostagemApi.add(postagem)
       .then((response) => {
         history.push("/postagens");
-        toast.success("Postagem adicionado com sucesso.");
+        toast.success("Postagem adicionada com sucesso.");
       })
 
-      .catch((error) => {
-        toast.error(`Erro: ${error}`);
+      .catch((erro) => {
+        toast.erro(`Erro: ${erro}`);
       });
 
   }
 
 
   function changeHandler(event) {
-    setErrors({});
-    switch (event.target.name) {
-      case "nome":
-        if (event.target.value.length === 0)
-          setErrors({ nome: "Nome é obrigatório" });
-        break;
-      default:
-    }
-
     setPostagem({ ...postagem, [event.target.name]: event.target.value });
   }
 
