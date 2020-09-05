@@ -6,8 +6,10 @@ import { toast } from "react-toastify";
 function PostagemAdd({ history }) {
 
   const [postagem, setPostagem] = useState({
-    Titulo: "",
-    Texto: "",
+    titulo: "",
+    texto: "",
+    curtidas: 0,
+    descurtidas: 0,
   });
 
 

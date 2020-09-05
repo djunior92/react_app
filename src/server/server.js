@@ -92,6 +92,8 @@ express.post("/addcomment", function (request, response) {
   request.body.codigo = max + 1;
   var now = new Date();
   request.body.data = now.getDate() + "/" + (now.getMonth() < 10 ? "0" + now.getMonth() : now.getMonth()) + "/" + now.getFullYear() + " " + now.getHours() + ":" + now.getMinutes();
+  request.body.curtidas = 0
+  request.body.descurtidas = 0;
 
   comentarios.push(request.body);
   response.json();
@@ -110,12 +112,10 @@ express.put("/attpost/:codigo/:type", function (request, response) {
   });
 
   promise.then((postagem) => {
-    if (type == "+") {
+    if (type == "+")
       postagem.curtidas = postagem.curtidas + 1
-    }
-    else {
+    else
       postagem.descurtidas = postagem.descurtidas + 1;
-    }
 
     response.json();
   });
