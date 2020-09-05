@@ -1,0 +1,19 @@
+.card {
+  margin: 30px;
+}
+.post--titulo {
+  float: left;
+}
+.post--curtida {
+  float: right;
+  display: flex;
+}
+.post--curtidas {
+  padding-left: 10px;
+  position: relative;
+  text-align: right;
+  top: 10px;
+}
+.btn {
+  margin-left: 5px;
+}

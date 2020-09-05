@@ -1,7 +1,7 @@
 import React from "react";
 import Cabecalho from "./components/Cabecalho";
-import PostagemAdd from "./components/PostagemAdd";
-import PostagemListaFuncao from "./components/PostagemLista";
+import NovaPostagem from "./components/NovaPostagem";
+import ListagemFuncao from "./components/Listagem";
 import PaginaPrincipal from "./components/PaginaPrincipal";
 import GlobalStyles from "./GlobalStyles";
 import { Route, Switch, NavLink } from "react-router-dom";
@@ -35,10 +35,9 @@ class App extends React.Component {
         </ul>
         <Switch>
           <Route path="/" exact component={PaginaPrincipal}></Route>
-
-          <Route path="/postagens" component={PostagemListaFuncao}></Route>
-          <Route path="/postagem/novo" component={PostagemAdd}></Route>
-          <Route path="/commentspost/:codigo" component={PostagemListaFuncao}></Route>
+          <Route path="/postagens" component={ListagemFuncao}></Route>
+          <Route path="/postagem/novo" component={NovaPostagem}></Route>
+          <Route path="/commentspost/:codigo" component={ListagemFuncao}></Route>
         </Switch>
       </>
     );

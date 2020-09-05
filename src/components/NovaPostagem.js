@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PostagemApi from "../api/PostagemApi";
 import { toast } from "react-toastify";
 
-function PostagemEdit({ history }) {
+function PostagemAdd({ history }) {
 
   const [postagem, setPostagem] = useState({
     Titulo: "",
@@ -25,7 +25,7 @@ function PostagemEdit({ history }) {
       })
 
       .catch((erro) => {
-        toast.erro(`Erro: ${erro}`);
+        alert("Erro: " + erro);
       });
 
   }
@@ -72,4 +72,4 @@ function PostagemEdit({ history }) {
   );
 }
 
-export default PostagemEdit;
+export default PostagemAdd;

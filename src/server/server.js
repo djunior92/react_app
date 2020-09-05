@@ -97,7 +97,29 @@ express.post("/addcomment", function (request, response) {
   response.json();
 });
 
+express.put("/attpost/:codigo/:type", function (request, response) {
+  var codigo = request.params["codigo"];
+  var type = request.params["type"];
 
+  var promise = new Promise((resolve, reject) => {
+    resolve(
+      postagens.filter((obj) => {
+        return obj.codigo == codigo;
+      })[0]
+    );
+  });
+
+  promise.then((postagem) => {
+    if (type == "+") {
+      postagem.curtidas = postagem.curtidas + 1
+    }
+    else {
+      postagem.descurtidas = postagem.descurtidas + 1;
+    }
+
+    response.json();
+  });
+});
 
 
 express.listen(8888);
